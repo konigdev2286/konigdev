@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ─────────────────────────────── */
+:root {
+  --bg: #F9F9FB;
+  --surface: #FFFFFF;
+  --surface-card: #EDEFF3;
+  --surface-warm: #F5F5F0;
+  --surface-muted: #F3F4F6;
+  --ink: #0D0D11;
+  --ink-muted: #646775;
+  --ink-light: #969BAA;
+  --accent: #39FF14;
+}
+
+/* ─── Base ──────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Grille de points subtile inspirée du style premium */
+  background-image: radial-gradient(rgba(13, 13, 17, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+::selection {
+  background-color: #39FF14;
+  color: #0D0D11;
+}
+
+/* ─── Réinitialisation focus accessible ─────────── */
+:focus-visible {
+  outline: 2px solid #39FF14;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ─── Composants réutilisables ──────────────────── */
+@layer components {
+  .btn-dark {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-ink text-white text-sm font-semibold transition-all duration-200 hover:bg-accent hover:text-ink hover:shadow-soft active:scale-[0.98] cursor-pointer;
+  }
+
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-surface text-ink text-sm font-semibold border border-black/10 transition-all duration-200 hover:border-black/30 hover:shadow-sm active:scale-[0.98] cursor-pointer;
+  }
+
+  .section-label {
+    @apply font-mono text-xs font-semibold uppercase tracking-wider text-ink-muted;
+  }
+
+  .section-title {
+    @apply mt-3 font-sans font-extrabold text-3xl sm:text-5xl text-ink tracking-tight leading-tight;
+  }
+}
+
+/* ─── Ticker / Marquee infini ───────────────────── */
+/* Le conteneur masque le débordement, l'animation anime le flex-row */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-track:hover,
+.marquee-wrapper:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── Perspective pour l'effet livre ───────────── */
+.perspective-book {
+  perspective: 2000px;
+}
+
+/* ─── Scrollbar fine et élégante ───────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 13, 17, 0.15);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 13, 17, 0.3);
+}
+
+/* ─── Animation Cercle Orbital (Méthode de travail) ─ */
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit-spin 38s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbit-counter-spin 38s linear infinite;
+}
+
+.orbit-container:hover .animate-orbit,
+.orbit-container:hover .animate-orbit-counter,
+.orbit-paused .animate-orbit,
+.orbit-paused .animate-orbit-counter {
+  animation-play-state: paused;
+}
+
