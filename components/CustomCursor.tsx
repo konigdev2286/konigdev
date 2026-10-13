@@ -93,16 +93,16 @@ export default function CustomCursor() {
               : "scale-100"
           }`}
           style={{
-            width: isHovered ? "54px" : "44px",
-            height: isHovered ? "54px" : "44px",
+            width: isHovered ? "38px" : "28px",
+            height: isHovered ? "38px" : "28px",
             background: "rgba(255, 255, 255, 0.95)",
             boxShadow: isHovered
-              ? "0 0 20px 2px rgba(255, 255, 255, 0.8)"
-              : "0 0 10px 1px rgba(255, 255, 255, 0.5)",
+              ? "0 0 14px 2px rgba(255, 255, 255, 0.7)"
+              : "0 0 6px 1px rgba(255, 255, 255, 0.4)",
           }}
         >
           {/* Logo KoniG.dev au centre du rond */}
-          <div className="relative w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center overflow-hidden rounded-full p-0.5">
+          <div className="relative w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center overflow-hidden rounded-full p-0.5">
             <Image
               src="/logo.png"
               alt="KoniG.dev"
