@@ -137,8 +137,8 @@ export default function Contact() {
                   },
                   {
                     label: "WhatsApp direct",
-                    href: "https://wa.me/242061062936",
-                    text: "+242 06 106 29 36",
+                    href: "https://wa.me/242053315733",
+                    text: "+242 05 331 57 33",
                     external: true,
                   },
                   {
